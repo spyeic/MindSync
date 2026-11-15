@@ -1,0 +1,53 @@
+{
+  "name": "mindsync",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "^24.0.0"
+  },
+  "scripts": {
+    "dev": "node scripts/check-node.mjs && node server.ts --dev",
+    "build": "node scripts/check-node.mjs && NEXT_TELEMETRY_DISABLED=1 next build --webpack && tsc -p tsconfig.server.json",
+    "start": "node scripts/check-node.mjs --production && node dist/server.js",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.server.json --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "db:backup": "node scripts/backup.mjs"
+  },
+  "dependencies": {
+    "@next/env": "16.4.6",
+    "better-sqlite3": "13.1.1",
+    "class-variance-authority": "0.7.1",
+    "clsx": "^2.1.1",
+    "drizzle-orm": "0.45.4",
+    "lucide-react": "1.72.0",
+    "next": "16.4.6",
+    "opencc-js": "1.4.2",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "socket.io": "4.8.4",
+    "socket.io-client": "4.8.4",
+    "tailwind-merge": "^3.3.1",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.65.1",
+    "@tailwindcss/postcss": "4.3.5",
+    "@types/better-sqlite3": "9.6.0",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.39.0",
+    "eslint-config-next": "16.4.6",
+    "tailwindcss": "4.3.5",
+    "typescript": "~5.9.3",
+    "vitest": "5.1.0"
+  },
+  "overrides": {
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": "11.0.8"
+    }
+  }
+}
